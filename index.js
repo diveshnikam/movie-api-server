@@ -43,15 +43,15 @@ const createMovie = async (newMovie) => {
 //createMovie(newMovie)
 
 app.post("/movies", async (req, res) => {
-  try{
-
-    const savedMovie = await createMovie(req.body)
-    res.status(201).json({message: "Movie added Successfully", newMovie: savedMovie})
-
-  }catch(error){
-    res.status(500).json({error: "Failed to add Movie"})
+  try {
+    const savedMovie = await createMovie(req.body);
+    res.status(201).json({ message: "Movie added Successfully", newMovie: savedMovie });
+  } catch (error) {
+    console.log("Error creating movie:", error); 
+    res.status(500).json({ error: error.message });
   }
-})
+});
+
 
 const readMovieByTitle = async (movieTitle) => {
   try {
